@@ -1,0 +1,65 @@
+/* 
+    For this exercise you need to create a static calculator using the tools
+    you have learned so far. Some helpful tools will be:
+    - if
+    - else if
+    - else
+    - console.log();
+
+    Don't forget to make variables, and aim to have your calculator, at a
+    minimum, be able to do addition, subtraction, multiplication, and division.
+
+    Stretch Goals:
+        - find the remainder of a division operation
+        - raise a number to a given power
+        - make sure the denominator of a division operator is not zero
+            - print a message to the console reminding the user not to divide by zero if they try
+*/
+
+/*
+    Brainstorm section.
+    I have 0 1 2 3 4 5 6 7 8 9
+    I have + - x / = 
+
+    If I have a number, I am going to figure out how to add to it, subtract from it, multiply, and divide
+*/
+
+// declare my main variables here
+operator = "^"
+numberOne = 10;
+numberTwo = 2;
+
+/* 
+    do the calculations here, so + - * /
+    % is the remainder, but just the remainder (it'll likely be a very small number)
+    note to self: division (/) needs to have NO spaces
+*/ 
+if(operator === "+"){
+    result = numberOne+numberTwo;
+}
+else if(operator === "-"){
+    result = numberOne-numberTwo;
+}
+else if(operator === "*"){
+    result = numberOne*numberTwo;
+}
+else if(operator === "^"){
+    result = numberOne**numberTwo;        // this means to raise the power
+}
+else if(operator === "/"){
+    result = numberOne/numberTwo;
+}
+else if(operator === "%"){                      // % means the remainder
+    result = numberOne%numberTwo;
+}
+else {
+    result = console.log("Please enter an operator first.");
+}
+
+// reminder to users they cannot divide by zero
+if(numberTwo === 0){
+    console.log("You can't divide by zero, silly!");
+}
+
+// i should prob display my result whatever it be here
+console.log(result);
