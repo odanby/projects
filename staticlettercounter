@@ -107,7 +107,7 @@ console.log("You have " + wordCount + " words in your name!");
 */
 
 // declare variables
-myName = "Tiare Rachelle Danby";   
+myName = "Joe Mama";   
 vowelCount = 0;
 consCount = 0;
 charCount = 0;
