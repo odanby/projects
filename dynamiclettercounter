@@ -1,0 +1,50 @@
+const prompt = require('prompt-sync')();
+
+let running = true;
+    while(running){
+        let userName = prompt("Hi, I am just an innocent computer! Please, tell me your full name!: ");
+        let vowelCount = 0;
+        let consCount = 0;
+        let letterCount = 0;
+        let charCount = 0;
+        let wordCount = 1;
+        for(let letter of userName){
+            if(
+                letter === "a" ||
+                letter === "e" ||
+                letter === "i" ||
+                letter === "o" ||
+                letter === "u" ||
+                letter === "A" ||
+                letter === "E" ||
+                letter === "I" ||
+                letter === "O" ||
+                letter === "U" 
+            ){
+                vowelCount++;
+                letterCount++;
+                charCount++;
+            } else if(letter === " "){
+                charCount++;
+                wordCount++;
+            } else if(letter === "."){
+                charCount++;
+            } else {
+                consCount++
+                letterCount++
+                charCount++
+            }
+        }
+        console.log(userName);
+        console.log("There are " + vowelCount + " vowels in your name.");
+        console.log("There are " + consCount + " consonants in your name.");
+        console.log("There are " + letterCount + " letters in your name.");
+        console.log("There are " + charCount + " total characters in your name.");
+        console.log("There are " + wordCount + " words in your name.");
+        console.log("What a lovely name! I definitely will not use this for evil purposes!");
+        let again = prompt("Has your name changed? If so, enter y: ")
+        if(again !== "y"){
+         running = false;
+        }
+    }
+console.log("Thank you for signing my DeathNote!");
