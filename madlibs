@@ -1,0 +1,114 @@
+/*
+    This exercises  involves creating a mad lib that will generate the missing words via arrays you create. 
+    For the sake of simplicity your mad lib should be no more than a paragraph or two, and you should aim to fill 
+    in no more than 5 blanks in the story. Use only the following tools to make your static mad lib (application 
+    runs once, does not take in user input):
+
+    include these:
+        variables
+        if
+        else if
+        else
+        console.log()
+        for
+        while
+        do while
+        arrays
+        template literals
+
+    Stretch Goals:
+    write multiple mad libs that take in varying amounts of words 
+    use your knowledge of control flow to determine which mad lib is printed to the console
+*/
+
+/*
+    make sure to define your variables
+*/
+
+/*
+// these are just for example: your mad lib may use more or fewer parts of speech
+properNouns = [];
+verbs = [];
+adjectives = [];
+adverbs = [];
+
+madlib = 
+`
+    you can write your mad lib in a template literal. This allows you to make a multi-line string while also
+    adding the contents of your arrays with the filler words. You can do this by writing a $ and then placing curly
+    brackets after it. Inside of the curly brackets you would place the value you want inserted, like so: 
+    ${properNouns[0]}. This is how you can easily fill in the blanks for your mad lib.
+`
+
+// make sure to actually print the story
+*/
+const prompt = require('prompt-sync')();
+
+properNoun = [];
+noun = [];
+verbPast = [];
+adjective = [];
+adverb = [];
+number = [];
+
+// I need 3 proper nouns, 5 nouns, 1 past tense verb, 6 adjectives, 1 adverb, and 1 number
+
+let running = true;
+    while(running){
+        let properNoun1 = prompt("Give me three names. Name 1: ");
+        let properNoun2 = prompt("Name 2: ");
+        let properNoun3 = prompt("and Name 3: ");
+        let noun1 = prompt("Give me five nouns. Noun 1: ");
+        let noun2 = prompt("Noun 2: ");
+        let noun3 = prompt("Noun 3: ");
+        let noun4 = prompt("Noun 4: ");
+        let noun5 = prompt("Noun 5: ");
+        let verbPast1 = prompt("Now one past tense verb: ");
+        let adjective1 = prompt("Give me six adjectives. Adjective 1: ");
+        let adjective2 = prompt("Adjective 2: ");
+        let adjective3 = prompt("Adjective 3: ");
+        let adjective4 = prompt("Adjective 4: ");
+        let adjective5 = prompt("Adjective 5: ");
+        let adjective6 = prompt("Adjective 6: ");
+        let adverb1 = prompt("One adverb, please!: ");
+        let number1 = prompt("And a number: ");
+            properNoun[0] = properNoun1;
+            properNoun[1] = properNoun2;
+            properNoun[2] = properNoun3;
+            noun[0] = noun1;
+            noun[1] = noun2;
+            noun[2] = noun3;
+            noun[3] = noun4;
+            noun[4] = noun5;
+            verbPast[0] = verbPast1;
+            adjective[0] = adjective1;
+            adjective[1] = adjective2;
+            adjective[2] = adjective3;
+            adjective[3] = adjective4;
+            adjective[4] = adjective5;
+            adjective[5] = adjective6;
+            adverb[0] = adverb1;
+            number[0] = number1;
+        let madLib =
+    `
+        Today I went to the zoo.
+        I saw a(n) ${adjective[0]} ${noun[0]}, jumping up and down in its tree.
+        They ${verbPast[0]} ${adverb[0]} on the large branch back home to its ${adjective[1]} ${noun[1]};
+        I got some ${noun[2]} and fed them to a ${adjective[2]} ${adjective[3]} ${noun[3]}, towering above my head.
+        The ${noun[3]} must've been at least ${number[0]} feet tall!
+        "Want to be friends?" the ${adjective[2]} ${noun[3]} called out. I jumped back. They could...speak?
+        "My name is ${properNoun[0]}! Pleasure to meet ya!" they said.
+        "Hello, ${properNoun[0]}, I'm ${properNoun[1]}!"
+        "Would you like some ${noun[4]}? My friend ${properNoun[2]} the ${noun[0]} gave me some!"
+        "Sure, thank you!" ${properNoun[0]} gave me a ${adjective[4]} scoop of ${noun[4]}.
+        "${properNoun[1]}! It's time to go home!" my mom called.
+        "You are a good friend," ${properNoun[0]} waved goodbye.
+        I had a(n) ${adjective[5]} day at the zoo.
+    `
+        console.log(madLib);
+        let again = prompt("Want to try again? y/n: ");
+        if(again !== "y"){
+            running = false;
+            console.log("Come to the zoo again!");
+            }
+    }
