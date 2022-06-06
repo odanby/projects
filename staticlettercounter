@@ -1,0 +1,215 @@
+/*
+    Using the control flow tools you have learned, write a script that will count how many vowels are in your
+    name and print a message stating how many there are to the console. For instance, if I provide the name
+    Eric I should get the message back saying something like "vowels in your name: 2". Use only the tools
+    and skills you have learned in training to make your script (no googling how to get user input: everything
+    should be handled by creating variables and manually changing them before you execute your script).
+
+    Stretch goals:
+    - count how many total words there are in the name (done!)
+    - count how many consonants there are in the name (done!)
+    - make it not count spaces for letter counter (done!)
+
+    if else if, for, do while, while, variables
+*/
+
+/*
+    Brainstorm section:
+
+    I need a variable that represents the name I am looping through and a variable that represents the number
+    of vowels in the name I am looping through.
+*/
+
+/* 
+nameToLoopThrough = ""; //assign a value later
+vowelCount = 0; // this value will increase depending on the name I loop through
+*/
+
+/*
+    Now that I have my variables, I need to start thinking about what kind of code I need to write for this script
+    to work correctly. I know that I need to loop through the name, so an easy way to do this is by using a for loop;
+
+    for(let letter of nameToLoopThrough){
+
+    }
+
+    Inside of this loop, I know I need to check and see if each letter is a vowel or not
+
+    for(let letter of nameToLoopThrough){
+        if(letter is a vowel){
+
+        }
+    }
+
+    If the letter is in fact a vowel, then I want to increase the vowelCount variable by 1
+
+    for(let letter of nameToLoopThrough){
+        if(letter is a vowel){
+            vowelCount++
+        }
+    }
+
+    After I have looped through all the letters of the name, I want to print a message to the console
+    stating how many vowels there are.
+
+    for(let letter of nameToLoopThrough){
+        if(letter is a vowel){
+            vowelCount++
+        }
+    }
+    console.log(statement);
+*/
+/*
+// declare variables
+myName = "Oriana Danby";
+vowelCount = 0;
+consCount = 0;
+charCount = 0;
+letterCount = 0;
+wordCount = 1;
+
+// set up a loop with certain rules
+for(let letter of myName){
+    if(
+        letter === "a" ||
+        letter === "e" ||
+        letter === "i" ||
+        letter === "o" ||
+        letter === "u" ||
+        letter === "A" ||
+        letter === "E" ||
+        letter === "I" ||
+        letter === "O" ||
+        letter === "U" 
+    ){
+        vowelCount++;
+        charCount++;
+        letterCount++;
+    } else if (letter === " "){         // if i have an else if, make sure to include (statement)
+        charCount++;
+        wordCount++;
+    } else {
+        consCount++;
+        charCount++;
+        letterCount++;
+    }
+}             
+
+// what will pop up in the terminal
+console.log("You have " + vowelCount + " vowels in your name!");
+console.log("You have " + consCount + " consonants in your name!");
+console.log("You have " + letterCount + " letters in your name!");
+console.log("You have " + charCount + " total characters in your name!");
+console.log("You have " + wordCount + " words in your name!");
+
+// figure out a way to make an error pop up that you can only type letters or spaces? would that be too complex
+
+*/
+
+// declare variables
+myName = "Tiare Rachelle Danby";   
+vowelCount = 0;
+consCount = 0;
+charCount = 0;
+letterCount = 0;
+wordCount = 1;
+
+// set up a loop with certain rules
+for(let letter of myName){
+    if(
+        letter === "a" ||
+        letter === "e" ||
+        letter === "i" ||
+        letter === "o" ||
+        letter === "u" ||
+        letter === "A" ||
+        letter === "E" ||
+        letter === "I" ||
+        letter === "O" ||
+        letter === "U" 
+    ){
+        vowelCount++;
+        charCount++;
+        letterCount++;
+    } else if (letter === " "){         // if i have an else if, make sure to include (statement)
+        charCount++;
+        wordCount++;
+    } else if (letter === "."){
+        charCount++;
+    } else {
+        consCount++;
+        charCount++;
+        letterCount++;
+    }
+}      
+
+for(let letter of myName){
+    if (
+        letter === "a" ||
+        letter === "b" ||
+        letter === "c" ||
+        letter === "d" ||
+        letter === "e" ||
+        letter === "f" ||
+        letter === "g" ||
+        letter === "h" ||
+        letter === "i" ||
+        letter === "j" ||
+        letter === "k" ||
+        letter === "l" ||
+        letter === "m" ||
+        letter === "n" ||
+        letter === "o" ||
+        letter === "p" ||
+        letter === "q" ||
+        letter === "r" ||
+        letter === "s" ||
+        letter === "t" ||
+        letter === "u" ||
+        letter === "v" ||
+        letter === "w" ||
+        letter === "x" ||
+        letter === "y" ||
+        letter === "z" ||
+        letter === "A" ||
+        letter === "B" ||
+        letter === "C" ||
+        letter === "D" ||
+        letter === "E" ||
+        letter === "F" ||
+        letter === "G" ||
+        letter === "H" ||
+        letter === "I" ||
+        letter === "J" ||
+        letter === "K" ||
+        letter === "L" ||
+        letter === "M" ||
+        letter === "N" ||
+        letter === "O" ||
+        letter === "P" ||
+        letter === "Q" ||
+        letter === "R" ||
+        letter === "S" ||
+        letter === "T" ||
+        letter === "U" ||
+        letter === "V" ||
+        letter === "W" ||
+        letter === "X" ||
+        letter === "Y" ||
+        letter === "Z" ||
+        letter === "." ||
+        letter === " " 
+    ){
+    } else {
+        console.log("Something is sussy. Only letters, spaces, and periods please!");
+    }
+}
+    
+
+// what will pop up in the terminal
+console.log("You have " + vowelCount + " vowels in your name.");
+console.log("You have " + consCount + " consonants in your name.");
+console.log("You have " + letterCount + " letters in your name.");
+console.log("You have " + charCount + " total characters in your name.");
+console.log("You have " + wordCount + " words in your name.");
+console.log("What a lovely name!");
