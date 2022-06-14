@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Basic Calculator</title>
+    <style>
+         *,*::before, *::after {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
+            font-weight: normal;
+            font-size: large;
+            color: rgb(223, 116, 133);
+        }
+
+        body{
+           background: linear-gradient(to right, rgb(255, 140, 167), rgb(106, 168, 225), rgb(220, 147, 212));
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+            font-size: x-large;
+        }
+
+        #result {
+            font-size: xx-large;
+            color: white;
+        }
+
+        #calculator-setup {
+            display: grid;
+            justify-content: center;
+            align-content: center;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>i am an innocent calculator :)</h1>
+    <div id = "calculator-setup">
+        <input type = "number" id = "input-one">
+
+        <select name = "operators" id = "operators">
+            <option>+</option>
+            <option>-</option>
+            <option>*</option>
+            <option>/</option>
+            <option>^</option>
+            <option>%</option>
+            <option>xoxo :)</option>
+        </select>
+    
+        <input type = "number" id = "input-two">
+    
+        <button id = "button">run calculations!</button>
+    
+        <p id = "result"></p>
+    </div>
+</body>
+<script>
+    const inputOne = document.getElementById("input-one");
+    const inputTwo = document.getElementById("input-two");
+    const operators = document.getElementById("operators");
+    const button = document.getElementById("button");
+    const result = document.getElementById("result");
+    const suspicious = document.getElementById("suspicious");
+
+    function calculation(){
+        if(operators.value === "+"){
+            result.textContent = parseInt(inputOne.value) + parseInt(inputTwo.value);
+        } else if(operators.value === "-") {
+            result.textContent = parseInt(inputOne.value) - parseInt(inputTwo.value);
+        } else if(operators.value === "*") {
+            result.textContent = parseInt(inputOne.value) * parseInt(inputTwo.value);
+        } else if(operators.value === "/") {
+            result.textContent = parseInt(inputOne.value) / parseInt(inputTwo.value);
+        } else if(operators.value === "^") {
+            result.textContent = parseInt(inputOne.value) ** parseInt(inputTwo.value);
+        } else if(operators.value === "%") {
+            result.textContent = parseInt(inputOne.value) % parseInt(inputTwo.value);
+        } else {
+            result.textContent = "I see you."
+        }
+    };
+
+    button.addEventListener("click", calculation);
+</script>
+</html>
