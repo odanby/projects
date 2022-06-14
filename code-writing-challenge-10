@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Code Writing Challenge 10</title>
+</head>
+<body>
+    <!-- 
+    The challenges in this file are designed to help you become more familiar with how to work with
+    html, css, and JavaScript. For each challenge you will be given instructions for what you need to do to 
+    complete the exercise.
+     -->
+
+     <!-- 
+        Exercise One: set an attribute on the header element below that will create an alert on the screen saying
+        "exercise one complete" when you click on it
+      -->
+    
+      <h1 onclick = "alert('Exercise One Complete')">make a popup appear when you click on this element</h1>
+
+     <!-- 
+        Exercise Two: set an attribute on the header element below that will change the background color of this
+        element to yellow when you click on it
+      -->
+
+      <h1 id = "yellowElement"; onclick = "this.style.backgroundColor = 'yellow'">
+        make the background of this element turn yellow when you click on it
+      </h1>
+
+     <!-- 
+        Exercise Three: create a function in the script section below that will add a solid red border to the header
+        below. Make the function execute when the button below is pressed by assign an attribute to the button
+      -->
+
+      <h1 id = "redBorder">make this element gain a solid red border by clicking the button below</h1>
+      <button onclick = "makeRedBorder()">make this button give the header above a solid red border</button>
+
+     <!-- 
+        Exercise Four: make the header element below change into a new color when you move the mouse over it,
+        then revert to its previous color when you move the mouse off it by adding attributes to the element
+      -->
+
+      <h1 id = "colorChange"; onmouseover = "this.style.color = 'pink'"; onmouseleave = "this.style.color = 'black'">make this element text change color when you move the mouse over it/off it</h1>
+
+</body>
+<script>
+/*
+  // NOTE: ignore the other exercises in this script, it was just me experimenting
+
+
+    // here's exercise two 
+    const yellowElement = document.getElementById("yellowElement");
+
+    function backgroundYellow(){
+     yellowElement.style.backgroundColor = "yellow";
+    }
+
+    yellowElement.addEventListener("click", backgroundYellow);
+*/
+    // now the third exercise
+    
+    function makeRedBorder(){
+      redBorder.style.border = "solid";   // this worked because I used redBorder as the id that the function works with
+      redBorder.style.borderColor = "red";
+    }
+
+    // now the fourth
+
+    // const colorChange = document.getElementById("colorChange");
+
+/*
+    function mouseMovesOver(){
+      colorChange.style.color = "green";
+    }
+
+    function mouseMovesOff(){
+      colorChange.style.color = "black";
+    }
+
+    colorChange.addEventListener("mouseover", mouseMovesOver);
+    colorChange.addEventListener("mouseleave", mouseMovesOff);
+*/
+</script>
+</html>
