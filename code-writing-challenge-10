@@ -43,41 +43,11 @@
 
 </body>
 <script>
-/*
-  // NOTE: ignore the other exercises in this script, it was just me experimenting
-
-
-    // here's exercise two 
-    const yellowElement = document.getElementById("yellowElement");
-
-    function backgroundYellow(){
-     yellowElement.style.backgroundColor = "yellow";
-    }
-
-    yellowElement.addEventListener("click", backgroundYellow);
-*/
     // now the third exercise
     
     function makeRedBorder(){
       redBorder.style.border = "solid";   // this worked because I used redBorder as the id that the function works with
       redBorder.style.borderColor = "red";
     }
-
-    // now the fourth
-
-    // const colorChange = document.getElementById("colorChange");
-
-/*
-    function mouseMovesOver(){
-      colorChange.style.color = "green";
-    }
-
-    function mouseMovesOff(){
-      colorChange.style.color = "black";
-    }
-
-    colorChange.addEventListener("mouseover", mouseMovesOver);
-    colorChange.addEventListener("mouseleave", mouseMovesOff);
-*/
 </script>
 </html>
