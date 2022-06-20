@@ -1,0 +1,168 @@
+Manager Acceptance Criteria:
+
+User Story #1:
+
+FEATURE:        Managers should be able to log in to access their home pages
+
+SCENARIO:       As a manager, I want to sign so I can view my custom homepage
+
+GIVEN   the manager is on the login page,
+WHEN    the manager enters in their correct user name,
+WHEN    the manager enters in their correct password, and
+WHEN    the manager clicks the login button,
+THEN    the manager should be logged in to the manager homepage.
+
+User Story #2:
+
+FEATURE:        Managers should be able to create defects on the manager homepage
+
+SCENARIO:       As a manager, I want to create defects so I can start addressing them
+
+GIVEN   the manager is on the manager homepage,
+WHEN    the manager enters in a defect name,
+WHEN    the manager enters in a defect description, AND
+WHEN    the manager clicks the "create defect" button,
+THEN    the manager should create a new unassigned defect.
+
+User Story #3:
+
+FEATURE:        Managers should be able to assign defects to a specified tester while on the manager homepage
+
+SCENARIO:       As a manager, I want to assign defects so the defects can be worked on
+
+GIVEN   the manager is on the manager homepage,
+WHEN    the manager selects an unassigned defect,
+WHEN    the manager selects a specific tester, AND
+WHEN    the manager clicks the "assign defect" button,
+THEN    the manager should assign a defect to a specified tester marked as "pending".
+
+User Story #4:
+
+FEATURE:        Managers should be able to log out of the manager homepage
+
+SCENARIO:       As a manager, I want to log out of the manager homepage so I can keep my account secure when I am not using it
+
+GIVEN   the manager is on the manager homepage,
+WHEN    the manager clicks the logout button,
+THEN    the manager should be logged out and returned back to the general homepage.
+
+---
+
+Tester Acceptance Criteria:
+
+User Story #1:
+
+FEATURE:        Testers should be able to log in to access their home pages
+
+SCENARIO:       As a tester, I want to sign so I can view my custom homepage
+
+GIVEN   the tester is on the login page,
+WHEN    the tester enters in their correct user name,
+WHEN    the tester enters in their correct password, and
+WHEN    the tester clicks the login button,
+THEN    the tester should be logged in to the tester homepage.
+
+User Story #2:
+
+FEATURE:        Testers should be notified a new pending defect has been assigned to them in their tester homepages
+
+SCENARIO:       As a tester, I want to be notified a new pending defect has been assigned to me so I can view it
+
+GIVEN   the tester is on the tester homepage,
+WHEN    the tester receives an alert notifying them of a new pending defect and
+WHEN    the tester clicks the "ok" button,
+THEN    the tester should be aware they have a new defect assigned to them.
+
+User Story #3:
+
+FEATURE:        Testers should be able to view pending defects assigned to them in their tester homepages
+
+SCENARIO:       As a tester, I want to view the pending defects that have been assigned to me so I can determine whether or not to work on it
+
+GIVEN   the tester is on the tester homepage,
+WHEN    the tester is notified of a new pending defect,
+WHEN    the tester reviews the defect name, and
+WHEN    the tester reviews the defect description,
+THEN    the tester should be aware of what the new defect assigned to them is.
+
+User Story #4:
+
+FEATURE:        Testers should be able to decline pending defects assigned to them in their tester homepages
+
+SCENARIO:       As a tester, I want to decline the pending defect that has been assigned to me if I determine it as low priority so I can focus on other tasks
+
+GIVEN   the tester is on the tester homepage,
+WHEN    the tester selects the pending defect's status,
+WHEN    the tester opens a dropdown of status options
+WHEN    the tester selects "decline" as their option, and
+WHEN    the tester presses the "update" button,
+THEN    the tester should have updated the pending defect's status to "declined".
+
+User Story #5:
+
+FEATURE:        Testers should be able to accept pending defects assigned to them in their tester homepages
+
+SCENARIO:       As a tester, I want to accept a pending defect that has been assigned to me if I determine it as a valid bug so I can begin working on it
+
+GIVEN   the tester is on the tester homepage,
+WHEN    the tester selects the pending defect's status,
+WHEN    the tester opens a dropdown of status options,
+WHEN    the tester selects "accept" as their option, and
+WHEN    the tester presses the "update" button,
+THEN    the tester should have updated the pending defect's status to "accepted".
+
+User Story #6:
+
+FEATURE:        Testers should be able to view an additional dropdown to change an accepted defect's status
+
+SCENARIO:       As a tester, I want to see what options I have to update an accepted defect's status so I can monitor the defect's progress
+
+GIVEN   the tester is on the tester homepage,
+WHEN    the tester updates a pending defect's status to "accepted",
+THEN    a new dropdown menu should be visible to the tester with options to update an accepted defect's status.
+
+User Story #7:
+
+FEATURE:        Testers should be able to update an accepted defect's status to rejected
+
+SCENARIO:       As a tester, I want to update an accepted defect's status to rejected if I determine it as an invalid bug so I can monitor the defect's progress
+
+GIVEN   the tester is on the tester homepage,
+WHEN    the tester opens a dropdown of the accepted defect's status options,
+WHEN    the tester selects "reject" as their option, and
+WHEN    the tester presses the "update" button,
+THEN    the tester should have updated the pending defect's status to "rejected".
+
+User Story #8:
+
+FEATURE:        Testers should be able to update an accepted defect's status to fixed
+
+SCENARIO:       As a tester, I want to update an accepted defect's status to fixed if I fixed the bug so I can monitor the defect's progress
+
+GIVEN   the tester is on the tester homepage,
+WHEN    the tester opens a dropdown of the accepted defect's status options,
+WHEN    the tester selects "fixed" as their option, and
+WHEN    the tester presses the "update" button,
+THEN    the tester should have updated the pending defect's status to "fixed".
+
+User Story #9:
+
+FEATURE:        Testers should be able to update an accepted defect's status to shelved
+
+SCENARIO:       As a tester, I want to update an accepted defect's status to shelved if I was unable to fix the bug so I can monitor the defect's progress
+
+GIVEN   the tester is on the tester homepage,
+WHEN    the tester opens a dropdown of the accepted defect's status options,
+WHEN    the tester selects "shelved" as their option, and
+WHEN    the tester presses the "update" button,
+THEN    the tester should have updated the pending defect's status to "shelved".
+
+User Story #10:
+
+FEATURE:        Testers should be able to log out of the tester homepage
+
+SCENARIO:       As a tester, I want to log out of the tester homepage so I can keep my account secure when I am not using it
+
+GIVEN   the tester is on the tester homepage,
+WHEN    the tester clicks the logout button,
+THEN    the tester should be logged out and returned back to the general homepage.
