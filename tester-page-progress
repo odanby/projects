@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Tester Page</title>
+</head>
+<body onload = "getDefect()" onload = "updateTheMayorOne()">
+    <h1>Welcome back, Robin!</h1>
+    <table id = "table-one">
+        <thead id = "table-head"></thead>
+        <tbody id = "table-body"></tbody>
+    </table>
+    <table id = "table-two">
+        <thead id = "table-head-two"></thead>
+        <tbody id = "table-body-two"></tbody>
+    </table>
+    <table>
+        <thead>
+            <tr>
+                <th>Mission Number</th>
+                <th>Accept?</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type = "number" id = "mission-number" placeholder = "Enter the mission number"></td>
+                <td>
+                    <select id = "accept-or-reject">
+                        <option value = "accept">Booyah!</option>
+                        <option value = "reject">Nah, it's no biggie</option>
+                    </select>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <button onclick = "acceptOrRejectMission()">Accept or reject the mission</button>
+    <button onclick = "updateDefect()">Update the mayor</button>
+    <button id = "logout">Get back to pizza and videogames</button> <!-- Robin, Starfire, Beast Boy, Cyborg options -->
+    <!--<button>Get back to meditating</button>  Raven -->
+</body>
+<script>
+    const logOut = document.getElementById("logout");
+
+    function confirmLogOut(){
+        let result = confirm("Are you sure everything's taken care of?");
+        if(result === true){
+            alert("Keep up the good work!");
+            window.location.href = "homepage.html";
+            return true;
+        } else {
+            return false;
+        }
+    };
+
+    logOut.addEventListener("click", confirmLogOut);
+
+    const tableOne = document.getElementById("table-one");
+    const defectName = document.getElementById("defect-name");
+    const defectDesc = document.getElementById("defect-desc");
+    const defectNameHere = document.getElementById("defect-name-here");
+    const defectDescHere = document.getElementById("defect-desc-here");
+    const defectNumberHere = document.getElementById("defect-number-here")
+    const tableBody = document.getElementById("table-body");
+    const tableHead = document.getElementById("table-head");
+    const missionNumber = document.getElementById("mission-number");
+
+    const tableTwo = document.getElementById("table-two");
+    const tableBodyTwo = document.getElementById("table-body-two");
+    const tableHeadTwo = document.getElementById("table-head-two");
+
+
+    async function getDefect(){
+
+        let httpResponse = await fetch(`https://bugcatcher.coe.revaturelabs.com/21/defects`)
+        console.log(httpResponse)
+        let responseBody = await httpResponse.json();
+
+        if(httpResponse.status === 200){ 
+            console.log(responseBody);
+            if(responseBody.assignedTo = "robin"){
+                alert("You have one or more pending missions!")
+
+                // I need to make a new row for the defect name, defect desc, and defect number
+                if(responseBody.status = "Pending"){
+                    let hd = document.createElement("th")
+                    hd.innerHTML = 
+                        `
+                            <th>Villain</th>
+                            <th>Crime</th>
+                            <th>Mission Number</th>
+                            <th>Status</th>
+                        `
+                    tableHead.appendChild(hd);
+
+                    for(let villainName of responseBody){
+                        console.log(villainName.stepsToReproduce)
+                        let tr = document.createElement("tr")
+                        tr.innerHTML = 
+                        `
+                            <td>${villainName.stepsToReproduce}</td>
+                            <td>${villainName.desc}</td>
+                            <td>${villainName.defectId}</td>
+                            <td>${villainName.status}</td>
+                        `
+                        tableBody.appendChild(tr);
+                    }
+                } else {
+                    alert("hang in there!")
+                }
+
+            } else {
+                alert("No new missions at this time! Kick back and relax.")
+            }
+
+        } else {
+            alert("Gizmo's hacked the system-- no missions could be found!")
+        }
+    };
+
+function acceptOrRejectMission(){
+    let acceptOrReject = document.getElementById("accept-or-reject")
+    if(acceptOrReject.value === "accept"){
+        let additionalTh = document.createElement("th")
+        additionalTh.innerHTML =
+        `
+        <th>Outcome</th>
+        `
+        tableHeadTwo.appendChild(additionalTh);
+        let additionalTr = document.createElement("td")
+        additionalTr.innerHTML =
+        `
+        <td>
+            <select>
+                <option>False alarm</option>
+                <option>Butts = kicked</option>
+                <option>Call the Titans East</option>
+            </select>
+        </td>
+        `
+        tableBodyTwo.appendChild(additionalTr);
+        alert("Please update the mayor again with the mission outcome!")
+    } else {
+        alert("Mister Mayor couldn't come to the phone!")
+    }
+}
+
+async function updateDefect(){
+    let updateInfo = {
+        status: "Pending"
+    };
+
+    let updateJSON = JSON.stringify(updateInfo);
+
+    let config = {
+        method: "PATCH",
+        headers: {'Content-Type':"application/json"},
+        body: updateJSON
+    };
+
+    let httpResponse = await fetch(`https://bugcatcher.coe.revaturelabs.com/21/defects/${missionNumber.value}`, config)
+    console.log(httpResponse.status)
+
+    if(httpResponse.status === 204){
+        alert("you can do it!")
+    }
+
+
+
+}
+</script>
+</html>
