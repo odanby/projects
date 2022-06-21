@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Mayor of Jump City Homepage</title>
+</head>
+<body>
+    <h1>Welcome back, Mr. Mayor!</h1>
+    <h2>Is the city about to be destroyed again today by a superhuman being? No worries, just send an alert to the Teen Titans!</h2>
+    <h3>Villain</h3>
+    <input type = "text" id = "defect-name">
+    <h3>Crime</h3>
+    <input type = "text" id = "defect-desc">
+    <h3>Which Titan should take the lead?</h3>
+    <select id = "defect-select">
+        <option value = "robin">Robin</option>
+        <option value = "starfire">Starfire</option>
+        <option value = "raven">Raven</option>
+        <option value = "beastboy">Beast Boy</option>
+        <option value = "cyborg">Cyborg</option>
+    </select>
+    <button onclick = "createDefect()">Notify the Teen Titans</button>
+    <h4>They should be on their way soon. Feel free to retreat into the abyss of your existence.</h4>
+    <button id = "logout">Logout</button>
+</body>
+<script>
+    const logOut = document.getElementById("logout");
+
+    function confirmLogOut(){
+        let result = confirm("Are you sure everything's taken care of?");
+        if(result === true){
+            alert("Thanks for nothing!");
+            window.location.href = "homepage.html";
+            return true;
+        } else {
+            return false;
+        }
+    };
+
+   logOut.addEventListener("click", confirmLogOut);
+
+   async function createDefect(){
+
+    let defectInfo = {
+        defectId: 0,
+        assignedTo: document.getElementById("defect-select").value,
+        dateReported: 0,
+        status: "Pending",
+        desc: document.getElementById("defect-desc").value, // desc means description
+        stepsToReproduce: document.getElementById("defect-name").value, // i don't think i can add on a name variable so im gonna use steps to reproduce instead
+        severity: "Low",
+        priority: "Low"
+    };
+
+    let createDefectJSON = JSON.stringify(defectInfo);
+
+    let config = {
+        method: "POST",
+        headers: {'Content-Type': "application/json"},
+        body: createDefectJSON
+    }
+
+    let httpResponse = await fetch("https://bugcatcher.coe.revaturelabs.com/21/defects", config);
+
+    if(httpResponse.status === 201){
+        let responseBody = await httpResponse.json();
+
+        if(responseBody.assignedTo === "robin"){
+            alert("Robin is on the mission!")
+        } else if(responseBody.assignedTo === "starfire"){
+            alert("Starfire is on the mission!")
+        } else if(responseBody.assignedTo === "raven"){
+            alert("Raven is on the mission!")
+        } else if(responseBody.assignedTo === "beastboy"){
+            alert("Beast Boy is on the mission!")
+        } else if(responseBody.assignedTo === "cyborg"){
+            alert("Cyborg is on the mission!")
+        } else {
+            alert("No one has been assigned this mission!")
+        }
+    } else {
+        let responseBody = await httpResponse.json();
+        alert(responseBody.detail);
+    }
+   }
+
+</script>
+</html>
