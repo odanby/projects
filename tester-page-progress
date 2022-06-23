@@ -3,8 +3,8 @@
 <head>
     <title>Tester Page</title>
 </head>
-<body onload = "getDefect()" onload = "updateTheMayorOne()">
-    <h1>Welcome back, Robin!</h1>
+<body onload = "getDefect()">
+    <h1>Welcome back, Titan!</h1>
     <table id = "table-one">
         <thead id = "table-head"></thead>
         <tbody id = "table-body"></tbody>
@@ -16,7 +16,6 @@
     <table>
         <thead>
             <tr>
-                <th>Mission Number</th>
                 <th>Accept?</th>
             </tr>
         </thead>
@@ -25,15 +24,19 @@
                 <td><input type = "number" id = "mission-number" placeholder = "Enter the mission number"></td>
                 <td>
                     <select id = "accept-or-reject">
-                        <option value = "accept">Booyah!</option>
-                        <option value = "reject">Nah, it's no biggie</option>
+                        <option value = "Accepted">Booyah!</option>
+                        <option value = "Rejected">Nah, it's no biggie</option>
                     </select>
                 </td>
             </tr>
         </tbody>
     </table>
-    <button onclick = "acceptOrRejectMission()">Accept or reject the mission</button>
-    <button onclick = "updateDefect()">Update the mayor</button>
+    <table id = "table-three">
+        <thead id = "table-head-three"></thead>
+        <tbody id = "table-body-three"></tbody>
+    </table>
+    <button onclick = "acceptOrRejectMission()">Update mission status</button>
+    <button onclick = "updateDefect()">Update mission outcome</button>
     <button id = "logout">Get back to pizza and videogames</button> <!-- Robin, Starfire, Beast Boy, Cyborg options -->
     <!--<button>Get back to meditating</button>  Raven -->
 </body>
@@ -67,6 +70,13 @@
     const tableBodyTwo = document.getElementById("table-body-two");
     const tableHeadTwo = document.getElementById("table-head-two");
 
+    const tableThree = document.getElementById("table-three");
+    const tableHeadThree = document.getElementById("table-head-three");
+    const tableBodyThree = document.getElementById("table-body-three");
+    const initialUpdate = document.getElementById("accept-or-reject");
+
+    //const secondaryUpdate = document.getElementById("bug-outcome")
+
 
     async function getDefect(){
 
@@ -76,18 +86,17 @@
 
         if(httpResponse.status === 200){ 
             console.log(responseBody);
-            if(responseBody.assignedTo = "robin"){
-                alert("You have one or more pending missions!")
-
+  
                 // I need to make a new row for the defect name, defect desc, and defect number
-                if(responseBody.status = "Pending"){
-                    let hd = document.createElement("th")
+                    
+                let hd = document.createElement("th")
                     hd.innerHTML = 
                         `
-                            <th>Villain</th>
-                            <th>Crime</th>
-                            <th>Mission Number</th>
-                            <th>Status</th>
+                        <th>Mission Number</th>    
+                        <th>Lead Titan</th>
+                        <th>Villain</th>
+                        <th>Crime</th>
+                        <th>Status</th>
                         `
                     tableHead.appendChild(hd);
 
@@ -96,75 +105,119 @@
                         let tr = document.createElement("tr")
                         tr.innerHTML = 
                         `
-                            <td>${villainName.stepsToReproduce}</td>
-                            <td>${villainName.desc}</td>
-                            <td>${villainName.defectId}</td>
-                            <td>${villainName.status}</td>
+                        <td>${villainName.defectId}</td>
+                        <td>${villainName.assignedTo}</td>
+                        <td>${villainName.stepsToReproduce}</td>
+                        <td>${villainName.desc}</td>
+                        <td>${villainName.status}</td>
                         `
                         tableBody.appendChild(tr);
                     }
-                } else {
-                    alert("hang in there!")
-                }
-
-            } else {
-                alert("No new missions at this time! Kick back and relax.")
-            }
-
         } else {
             alert("Gizmo's hacked the system-- no missions could be found!")
         }
     };
 
-function acceptOrRejectMission(){
-    let acceptOrReject = document.getElementById("accept-or-reject")
-    if(acceptOrReject.value === "accept"){
-        let additionalTh = document.createElement("th")
-        additionalTh.innerHTML =
-        `
-        <th>Outcome</th>
-        `
-        tableHeadTwo.appendChild(additionalTh);
-        let additionalTr = document.createElement("td")
-        additionalTr.innerHTML =
-        `
-        <td>
-            <select>
-                <option>False alarm</option>
-                <option>Butts = kicked</option>
-                <option>Call the Titans East</option>
-            </select>
-        </td>
-        `
-        tableBodyTwo.appendChild(additionalTr);
-        alert("Please update the mayor again with the mission outcome!")
-    } else {
-        alert("Mister Mayor couldn't come to the phone!")
+    async function acceptOrRejectMission(){
+
+        let updateInfo = {
+            status: initialUpdate.value
+        };
+
+        let updateJSON = JSON.stringify(updateInfo);
+
+        let config = {
+            method: "PATCH",
+            headers: {'Content-Type':"application/json"}, 
+            body: updateJSON
+        };
+
+        let httpResponse = await fetch(`https://bugcatcher.coe.revaturelabs.com/21/defects/${missionNumber.value}`, config)
+        console.log(httpResponse.status)
+        
+        if(httpResponse.status === 204){        
+            if(initialUpdate.value === "Accepted"){
+                let additionalTh = document.createElement("th")
+                additionalTh.innerHTML =
+                `
+                <th>Outcome</th>
+                `
+                tableHeadThree.appendChild(additionalTh);
+                let additionalTr = document.createElement("td")
+                additionalTr.innerHTML =
+                `
+                <td>
+                    <select id = "bug-outcome">
+                        <option value = "Declined">False alarm</option>
+                        <option value = "Fixed">Butts = kicked</option>
+                        <option value = "Shelved">Call the Titans East</option>
+                    </select>
+                </td>
+                `
+                tableBodyThree.appendChild(additionalTr);
+                secondaryUpdate = document.getElementById("bug-outcome")
+
+                alert("Please update the mayor with the mission outcome!")
+            } else if(initialUpdate.value === "Rejected"){
+                let result = confirm("The mayor will deal with it on his own.");
+                if(result === true){
+                    window.location.href = "tester-page.html";
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                alert("Status not pulling up as accepted or rejected, may need to change === to == or =")
+            }
+        } else {
+            alert("http Response is not 204")
+        }
     }
-}
 
-async function updateDefect(){
-    let updateInfo = {
-        status: "Pending"
-    };
+    async function updateDefect(){
+        let updateInfo = {
+            status: secondaryUpdate.value
+        };
 
-    let updateJSON = JSON.stringify(updateInfo);
+        let updateJSON = JSON.stringify(updateInfo);
 
-    let config = {
-        method: "PATCH",
-        headers: {'Content-Type':"application/json"},
-        body: updateJSON
-    };
+        let config = {
+            method: "PATCH",
+            headers: {'Content-Type':"application/json"}, 
+            body: updateJSON
+        };
 
-    let httpResponse = await fetch(`https://bugcatcher.coe.revaturelabs.com/21/defects/${missionNumber.value}`, config)
-    console.log(httpResponse.status)
+        let httpResponse = await fetch(`https://bugcatcher.coe.revaturelabs.com/21/defects/${missionNumber.value}`, config)
+        console.log(httpResponse.status)
 
-    if(httpResponse.status === 204){
-        alert("you can do it!")
+        if(httpResponse.status === 204){
+            if(secondaryUpdate.value === "Declined"){
+                let result = confirm("Back to TV...");
+                if(result === true){
+                    window.location.href = "tester-page.html";
+                    return true;
+                } else {
+                    return false;
+                }
+            } else if(secondaryUpdate.value === "Fixed"){
+                let result = confirm("You saved the day!");
+                if(result === true){
+                    window.location.href = "tester-page.html";
+                    return true;
+                } else {
+                    return false;
+                }
+            } else if(secondaryUpdate.value === "Shelved"){
+                let result = confirm("Calling back-up!");
+                if(result === true){
+                    window.location.href = "tester-page.html";
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        }
     }
 
-
-
-}
 </script>
 </html>
