@@ -12,11 +12,11 @@
     <input type = "text" id = "defect-desc">
     <h3>Which Titan should take the lead?</h3>
     <select id = "defect-select">
-        <option value = "robin">Robin</option>
-        <option value = "starfire">Starfire</option>
-        <option value = "raven">Raven</option>
-        <option value = "beastboy">Beast Boy</option>
-        <option value = "cyborg">Cyborg</option>
+        <option value = "Robin">Robin</option>
+        <option value = "Starfire">Starfire</option>
+        <option value = "Raven">Raven</option>
+        <option value = "BeastBoy">Beast Boy</option>
+        <option value = "Cyborg">Cyborg</option>
     </select>
     <button onclick = "createDefect()">Notify the Teen Titans</button>
     <h4>They should be on their way soon. Feel free to retreat into the abyss of your existence.</h4>
@@ -64,15 +64,15 @@
     if(httpResponse.status === 201){
         let responseBody = await httpResponse.json();
 
-        if(responseBody.assignedTo === "robin"){
+        if(responseBody.assignedTo === "Robin"){
             alert("Robin is on the mission!")
-        } else if(responseBody.assignedTo === "starfire"){
+        } else if(responseBody.assignedTo === "Starfire"){
             alert("Starfire is on the mission!")
-        } else if(responseBody.assignedTo === "raven"){
+        } else if(responseBody.assignedTo === "Raven"){
             alert("Raven is on the mission!")
-        } else if(responseBody.assignedTo === "beastboy"){
+        } else if(responseBody.assignedTo === "BeastBoy"){
             alert("Beast Boy is on the mission!")
-        } else if(responseBody.assignedTo === "cyborg"){
+        } else if(responseBody.assignedTo === "Cyborg"){
             alert("Cyborg is on the mission!")
         } else {
             alert("No one has been assigned this mission!")
