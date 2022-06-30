@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Gift Card Tracker</title>
+    <style>
+        body {
+            background: linear-gradient(to right, pink, #9e9ee4, #c13bc1);
+            display: block;
+            align-items: center;
+            text-align: center;
+        }
+
+        h1 {
+            text-align: center;
+            padding-top: 20px;
+            font-size: 64px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-transform: uppercase;
+            color: #9e9ee4;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 32px;
+            font-family: 'Courier New', Courier, monospace;
+            color: white; 
+        }
+
+        h3 {
+            text-align: center;
+            padding-top: 20px;
+            font-size: 20px;
+            font-family: 'Courier New', Courier, monospace;
+            color: white; 
+        }
+
+        #main-body {
+            background-color: #ffc5ef9e;
+            display: block;
+            align-items: center;
+            text-align: center;
+        }
+
+        .search-input {
+            background-color: #ffecfd;
+            height: 40px;
+            width: 350px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: medium;
+            border: solid 1px pink;
+            text-align: center;
+            color: #7070a7;
+            outline: none;
+        }
+
+        .search-button {
+            background-color: #7070a7;
+            height: 45px;
+            width: 100px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: medium;
+            border: solid 1px pink;
+            text-align: center;
+            color: #ffecfd;
+            outline: none;
+        }
+
+        ::placeholder {
+            color: #a6a6dd;
+            text-align: center;
+        }
+
+        #cute-bunny {
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id = "main-body">
+        <h1>Gift Card Tracker</h1>
+        <h2>Search by...</h2>
+        <div>
+            <h3>Gift Card ID</h3>
+            <input class = "search-input" id = "id-search" type = "number" placeholder = "enter gift card id#">
+            <button class = "search-button" id = "id-button">Search</button>
+            <h3>Gift Card Business Name</h3>
+            <input class = "search-input" id = "business-name-search" type = "text" placeholder = "enter business name">
+            <button class = "search-button" id = "business-button">Search</button>
+            <h3>Gift Card Recipient Name</h3>
+            <input class = "search-input" id = "recipient-name-search" type = "text" placeholder = "enter recipient name">
+            <button class = "search-button" id = "name-button">Search</button>
+            <h3>Gift Card Issue Date</h3>
+            <input class = "search-input" id = "issue-date" type = "text" placeholder = "enter gift card issue date">
+            <button class = "search-button" id = "date-button">Search</button>
+        </div>
+        <img id = "cute-bunny" src = "https://c.tenor.com/ikzslJI3dh8AAAAj/pixel-bunny.gif" alt = "cute-bunny">
+    </div>
+</body>
+<script>
+    const idButton = document.getElementById("id-button");
+    const businessButton = document.getElementById("business-button");
+    const nameButton = document.getElementById("name-button");
+    const dateButton = document.getElementById("date-button");
+
+    // id
+    function changeIdColor() {
+        idButton.style.color = "#7070a7";
+        idButton.style.backgroundColor = "#ffecfd";
+    }
+
+    function revertIdColor() {
+        idButton.style.color = "#ffecfd";
+        idButton.style.backgroundColor = "#7070a7";
+    }
+
+    idButton.addEventListener("mouseover", changeIdColor);
+    idButton.addEventListener("mouseleave", revertIdColor);
+
+    // business
+    function changeBusinessColor() {
+        businessButton.style.color = "#7070a7";
+        businessButton.style.backgroundColor = "#ffecfd";
+    }
+
+    function revertBusinessColor() {
+        businessButton.style.color = "#ffecfd";
+        businessButton.style.backgroundColor = "#7070a7";
+    }
+
+    businessButton.addEventListener("mouseover", changeBusinessColor);
+    businessButton.addEventListener("mouseleave", revertBusinessColor);
+
+    // name
+    function changeNameColor() {
+        nameButton.style.color = "#7070a7";
+        nameButton.style.backgroundColor = "#ffecfd";
+    }
+
+    function revertNameColor() {
+        nameButton.style.color = "#ffecfd";
+        nameButton.style.backgroundColor = "#7070a7";
+    }
+
+    nameButton.addEventListener("mouseover", changeNameColor);
+    nameButton.addEventListener("mouseleave", revertNameColor);
+
+    // date
+    function changeDateColor() {
+        dateButton.style.color = "#7070a7";
+        dateButton.style.backgroundColor = "#ffecfd";
+    }
+
+    function revertDateColor() {
+        dateButton.style.color = "#ffecfd";
+        dateButton.style.backgroundColor = "#7070a7";
+    }
+
+    dateButton.addEventListener("mouseover", changeDateColor);
+    dateButton.addEventListener("mouseleave", revertDateColor);
+</script>
+</html>
